@@ -93,12 +93,11 @@ TotalTime就是应用的启动时间
 
 根据Activity的启动流程我们知道，我们可以把耗时操作移动到onWindowFocusChanged方法中就可以了
 
-
-
-
 ## 三、性能分析工具
 
-### 3.1 Track
+### 3.1 Android Profiling性能检测工具
+
+### 3.2 StrictMode的使用
 
 
 
