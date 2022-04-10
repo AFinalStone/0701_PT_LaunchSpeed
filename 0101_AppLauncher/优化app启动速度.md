@@ -19,7 +19,7 @@
 
 - 2秒内启动，用户觉得很快；5秒以内，用户觉得还凑合；8秒以内，用户觉得比较慢；8秒以上，用户直接卸载app走人
 
-## 二、优化应用程序启动（治标）
+## 二、优化应用程序启动
 
 ### 2.1 如何统计app的启动时间
 
@@ -27,15 +27,84 @@
 - 使用adb命令：adb shell
 
 ```cmd
-generic_x86_arm:/ $ am start -S -W com.example.performancetuning/.MainActivity
+generic_x86_arm:/ $ am start -S -W com.example.performancetuning/.LaunchActivity
 Stopping: com.example.performancetuning
-Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.example.performancetuning/.MainActivity }
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.example.performancetuning/.LaunchActivity }
 Status: ok
 LaunchState: COLD
-Activity: com.example.performancetuning/.MainActivity
+Activity: com.example.performancetuning/.LaunchActivity
 TotalTime: 3619
 WaitTime: 3621
 Complete
 ```
 
 TotalTime就是应用的启动时间
+
+### 2.2 处理黑白屏问题（启动优化治标）
+
+主要是修改LaunchActivity的背景颜色
+
+```xml
+
+<style name="LaunchActivityStyle" parent="Theme.PerformanceTuning">
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/teal_200</item>
+</style>
+
+```
+
+```xml
+
+<activity android:name=".LaunchActivity" android:exported="true"
+    android:theme="@style/LaunchActivityStyle">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
+
+### 2.3 处理黑白屏问题（启动优化治本）
+
+- ActivityThread->handleLaunchActivity
+- ActivityThread->performLaunchActivity
+- Activity->attach
+- **Window->setCall(this)**
+- ActivityThread->handleResumeActivity
+- ActivityThread->performResumeActivity
+- Activity->onResume
+- ActivityThread->handleResumeActivity
+- WindowManager->addView
+- WindowManagerImpl->addView
+- WindowManagerGlobal->addView
+- WindowManagerImpl->setView
+- Session->addToDisplay(iWindow)
+- WindowManagerService->addWindow(iWindow)
+- WindowManagerService->updateFocusedWindowLocked()
+- WindowManagerService->sendMessage(REPORT_FOCUS_CHANGE)
+- iWindow(WindowManagerImpl).windowFocusChanged
+- iWindow(WindowManagerImpl).sendMessage(MSG_WINDOW_FOCUS_CHANGED)
+- iWindow(WindowManagerImpl).handleWindowFocusChanged
+- mView(DecorView).dispatchWindowFocusChanged
+- mView(DecorView).onWindowFocusChanged
+- mWindow.getCallback();
+- **Activity.onWindowFocusChanged()**;
+
+根据Activity的启动流程我们知道，我们可以把耗时操作移动到onWindowFocusChanged方法中就可以了
+
+
+
+
+## 三、性能分析工具
+
+### 3.1 Track
+
+
+
+
+
+
+
+
+
