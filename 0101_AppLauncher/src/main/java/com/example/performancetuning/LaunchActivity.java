@@ -1,18 +1,22 @@
 package com.example.performancetuning;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.example.performancetuning.home.HomeActivity;
+
+import java.util.List;
 
 public class LaunchActivity extends AppCompatActivity {
+
+    private boolean mIsInit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class LaunchActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(strings, 200);
         }
+
 //        delayTest();
 //        File file = new File("/sdcard/leo.txt");
 //        FileOutputStream fileOutputStream = null;
@@ -48,8 +53,12 @@ public class LaunchActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        //埋点结束，期间start 到 stop 之间的代码，就是你要测试的代码范围
-//        Debug.stopMethodTracing();
+        if (!mIsInit) {
+            mIsInit = true;
+            System.out.println("===========app初始化");
+            delayTest();
+        }
+        System.out.println("===========焦点发生了改变");
         super.onWindowFocusChanged(hasFocus);
     }
 
@@ -59,5 +68,9 @@ public class LaunchActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void toHomeOnClick(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }
