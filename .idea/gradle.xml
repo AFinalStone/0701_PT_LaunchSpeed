@@ -13,6 +13,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/0101_AppLauncher" />
+            <option value="$PROJECT_DIR$/0201_CrashHandler" />
+            <option value="$PROJECT_DIR$/0202_Bugly" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

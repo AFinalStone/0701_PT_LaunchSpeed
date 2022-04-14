@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Android01_PerformanceTuning"
 include ':0101_AppLauncher'
+include ':0201_CrashHandler'
+include ':0202_Bugly'
