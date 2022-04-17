@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.File;
 import java.io.FileNotFoundException;
