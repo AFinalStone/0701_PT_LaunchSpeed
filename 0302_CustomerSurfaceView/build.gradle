@@ -6,8 +6,8 @@ android {
     compileSdk 28
 
     defaultConfig {
-        applicationId "com.example.performancetuning"
-        minSdk 21
+        applicationId "com.example.customersurfaceview"
+        minSdk 23
         targetSdk 28
         versionCode 1
         versionName "1.0"
@@ -19,11 +19,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    android {
-        lint {
-            baseline = file("lint-baseline.xml")
         }
     }
     compileOptions {
