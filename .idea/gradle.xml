@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/0201_CrashHandler" />
             <option value="$PROJECT_DIR$/0202_Bugly" />
             <option value="$PROJECT_DIR$/0301_CustomerView" />
+            <option value="$PROJECT_DIR$/0501_Bitmap" />
+            <option value="$PROJECT_DIR$/0601_Signature" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
