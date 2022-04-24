@@ -14,8 +14,7 @@
             <option value="$PROJECT_DIR$/0101_AppLauncher" />
             <option value="$PROJECT_DIR$/0201_CrashHandler" />
             <option value="$PROJECT_DIR$/0202_Bugly" />
-            <option value="$PROJECT_DIR$/0301_CustomerView" />
-            <option value="$PROJECT_DIR$/0302_CustomerSurfaceView" />
+            <option value="$PROJECT_DIR$/0301_Test" />
           </set>
         </option>
       </GradleProjectSettings>
