@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_export_file_to_sdcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="把文件导出到外部存储卡中" />
+
+    <Button
+        android:id="@+id/btn_load_image_shake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载图片_内存抖动" />
+
+    <Button
+        android:id="@+id/btn_load_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载图片_RGB888" />
+
+    <Button
+        android:id="@+id/btn_load_image_compress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载图片_带压缩RGB565" />
+
+    <ImageView
+        android:id="@+id/image01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_dark" />
+
+    <ImageView
+        android:id="@+id/image02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_dark" />
+</LinearLayout>
