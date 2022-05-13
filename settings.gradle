@@ -16,7 +16,6 @@ rootProject.name = "Android01_PerformanceTuning"
 include ':0101_AppLauncher'
 include ':0201_CrashHandler'
 include ':0202_Bugly'
-include ':0301_CustomerView'
-include ':0302_CustomerSurfaceView'
+include ':0301_Test'
 include ':0501_Bitmap'
 include ':0601_Signature'

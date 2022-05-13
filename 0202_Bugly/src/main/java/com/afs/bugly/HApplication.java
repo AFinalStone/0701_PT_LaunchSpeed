@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.tencent.bugly.crashreport.CrashReport;
 
-import java.lang.reflect.Field;
-
 public class HApplication extends Application {
 
     @Override
@@ -13,7 +11,6 @@ public class HApplication extends Application {
         super.onCreate();
         //bugly初始化
         CrashReport.initCrashReport(this, BuildConfig.BUGLY_APPID, BuildConfig.DEBUG);
-
     }
 
     private void test() {
